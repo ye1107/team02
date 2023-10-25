@@ -14,9 +14,9 @@ class CreateKeysTable extends Migration
     public function up()
     {
         Schema::create('keys', function (Blueprint $table) {
-            $table->id();
-            $table->string('key');
-            $table->string('room');
+            $table->id()->comment('編號(主鍵)');
+            $table->string('key')->comment('鑰匙');
+            $table->string('room')->comment('教室');
             $table->timestamps();
         });
     }
