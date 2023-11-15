@@ -16,19 +16,19 @@ class RecordsTableSeeder extends Seeder
 
 
      Public function generateRandomUid(){
-        $uids = range(1, 25);
-        return $uids[rand(0, count($uids) - 1)];
+        $uid = range(1, 25);
+        return $uid[rand(0, count($uid) - 1)];
     }
     public function generateRandomKid(){
-        $kids = range(1, 11);
-        return $kids[rand(0,count($kids)-1)];
+        $kid = range(1, 11);
+        return $kid[rand(0,count($kid)-1)];
     }
 
     public function run()
     {
         for ($i=0; $i<25; $i++){
-            $uids = $this->generateRandomUid();
-            $kids = $this->generateRandomKid();
+            $uid = $this->generateRandomUid();
+            $kid = $this->generateRandomKid();
             $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
             $random_date = Carbon::now()->subMonths(rand(0, 12))->subRealDays(rand(0, 31));
             $random_lend_date = $random_date->copy();
@@ -37,13 +37,14 @@ class RecordsTableSeeder extends Seeder
             $back_time = $lend_time->copy()->addMinutes(50);
         
             DB::table('records')->insert([
-            'uid' => $uids,
-            'kid' => $kids,
+            'uid' => $uid,
+            'kid' => $kid,
             'lend_date' => $random_lend_date,
             'lend_time' => $lend_time,
             'back_date' => $random_back_date,
             'back_time' => $back_time,
-            
+            'created_at' =>$random_datetime,
+            'updated_at' =>$random_datetime
             ]);
         }
     }

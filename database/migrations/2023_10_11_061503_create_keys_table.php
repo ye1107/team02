@@ -15,8 +15,8 @@ class CreateKeysTable extends Migration
     {
         Schema::create('keys', function (Blueprint $table) {
             $table->id()->comment('編號(主鍵)');
-            $table->string('key')->comment('鑰匙');
-            $table->string('room')->comment('教室');
+            $table->string('key')->default('test')->comment('鑰匙');
+            $table->string('room')->default('test')->comment('教室');
             $table->timestamps();
         });
     }

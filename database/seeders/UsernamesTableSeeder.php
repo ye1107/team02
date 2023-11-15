@@ -15,7 +15,7 @@ class UsernamesTableSeeder extends Seeder
      */
     
      public function generateRandomNumber(){
-        $numbers = [
+        $number = [
             'D1104181037',
             'D1104181038',
             'D1104181039',
@@ -38,10 +38,10 @@ class UsernamesTableSeeder extends Seeder
             'PP120'
 
         ];
-        return $numbers[rand(0,count($numbers)-1)];
+        return $number[rand(0,count($number)-1)];
     }
     public function generateRandomName(){
-        $names = [
+        $name = [
             'John',
             'Sarah',
             'Michael',
@@ -61,10 +61,10 @@ class UsernamesTableSeeder extends Seeder
             'Daniel',
             'Ella'
         ];
-        return $names[rand(0,count($names)-1)];
+        return $name[rand(0,count($name)-1)];
     }
     public function generateRandomPhoto(){
-        $photos = [
+        $photo = [
             'C:\Program Files\Software1',
             'C:\Users\User1\Documents\Folder1',
             'C:\Windows\System32',
@@ -86,21 +86,22 @@ class UsernamesTableSeeder extends Seeder
             'C:\Program Files (x86)\Software8',
         ];
     
-        return $photos[rand(0, count($photos) - 1)];
+        return $photo[rand(0, count($photo) - 1)];
     }
     public function run()
     {
         for ($i=0; $i<25; $i++){
-            $numbers = $this->generateRandomNumber();
-            $names = $this->generateRandomName();
-            $photos = $this->generateRandomPhoto();
+            $number = $this->generateRandomNumber();
+            $name = $this->generateRandomName();
+            $photo = $this->generateRandomPhoto();
             $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
            
             DB::table('usernames')->insert([
-            'number' => $numbers,
-            'name' => $names,
-            'photo' => $photos,
-            
+            'number' => $number,
+            'name' => $name,
+            'photo' => $photo,
+            'created_at' =>$random_datetime,
+            'updated_at' =>$random_datetime
          ]);
         }
     }
