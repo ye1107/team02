@@ -32,7 +32,7 @@ class KeysTableSeeder extends Seeder
     }
     public function run()
     {
-        for ($i=0; $i<25; $i++){
+        for ($i=0; $i<30; $i++){
             $key = $this->generateRandomKey();
             $room = $key . "教室";
             $random_datetime = Carbon::now()->subMinutes(rand(1, 55));
