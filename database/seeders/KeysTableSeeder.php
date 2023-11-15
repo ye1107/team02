@@ -70,8 +70,7 @@ class KeysTableSeeder extends Seeder
             DB::table('keys')->insert([
             'key' => $keys,
             'room' => $rooms,
-            'created_at' => $random_datetime,
-            'updated_at' => $random_datetime,
+            
          ]);
         }
     }

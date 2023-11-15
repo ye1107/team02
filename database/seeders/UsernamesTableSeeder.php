@@ -100,8 +100,7 @@ class UsernamesTableSeeder extends Seeder
             'number' => $numbers,
             'name' => $names,
             'photo' => $photos,
-            'created_at' => $random_datetime,
-            'updated_at' => $random_datetime,
+            
          ]);
         }
     }

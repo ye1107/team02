@@ -43,8 +43,7 @@ class RecordsTableSeeder extends Seeder
             'lend_time' => $lend_time,
             'back_date' => $random_back_date,
             'back_time' => $back_time,
-            'created_at' => $random_datetime,
-            'updated_at' => $random_datetime,
+            
             ]);
         }
     }
