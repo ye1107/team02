@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Keys;
+use App\Models\Key;
 
 class KeysController extends Controller
 {
@@ -14,7 +14,7 @@ class KeysController extends Controller
      */
     public function index()
     {
-        return Keys::all()->toArray();
+        return Key::all()->toArray();
     }
 
     /**

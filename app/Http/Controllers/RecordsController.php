@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Records;
+use App\Models\Record;
 
 class RecordsController extends Controller
 {
@@ -14,7 +14,7 @@ class RecordsController extends Controller
      */
     public function index()
     {
-        return Records::all()->toArray();
+        return Record::all()->toArray();
     }
 
     /**

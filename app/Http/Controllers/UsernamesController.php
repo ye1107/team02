@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Usernames;
+use App\Models\Username;
 
 class UsernamesController extends Controller
 {
@@ -14,7 +14,7 @@ class UsernamesController extends Controller
      */
     public function index()
     {
-        return Usernames::all()->toArray();
+        return Username::all()->toArray();
     }
 
     /**
