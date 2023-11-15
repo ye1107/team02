@@ -14,7 +14,9 @@ use App\Http\Controllers\UsernamesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/',function(){
+    return redirect('records');
+});
 Route::get('records',[RecordsController::class,'index'])->name('records.index');
 Route::get('keys',[KeysController::class,'index'])->name('keys.index');
 Route::get('usernames',[UsernamesController::class,'index'])->name('usernames.index');

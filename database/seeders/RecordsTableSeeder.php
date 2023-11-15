@@ -16,7 +16,7 @@ class RecordsTableSeeder extends Seeder
 
 
      Public function generateRandomUid(){
-        $uid = range(1, 25);
+        $uid = range(1, 30);
         return $uid[rand(0, count($uid) - 1)];
     }
     public function generateRandomKid(){
