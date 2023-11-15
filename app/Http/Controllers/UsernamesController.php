@@ -14,7 +14,7 @@ class UsernamesController extends Controller
      */
     public function index()
     {
-        //
+        return Usernames::all()->toArray();
     }
 
     /**

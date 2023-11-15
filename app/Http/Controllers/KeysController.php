@@ -14,7 +14,7 @@ class KeysController extends Controller
      */
     public function index()
     {
-        //
+        return Keys::all()->toArray();
     }
 
     /**
