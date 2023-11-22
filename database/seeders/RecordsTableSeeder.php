@@ -15,11 +15,17 @@ class RecordsTableSeeder extends Seeder
      */
 
 
-     Public function generateRandomUid(){
-        $uid = range(1, 30);
-        return $uid[rand(0, count($uid) - 1)];
-    }
-    public function generateRandomKid(){
+     public function generateRandomUid(){
+        static $uid = [];
+
+  if (empty($uid)) {
+      $uid = range(1, 30);
+      shuffle($uid);
+  }
+
+  return array_pop($uid);
+}
+     public function generateRandomKid(){
         $kid = range(1, 11);
         return $kid[rand(0,count($kid)-1)];
     }
