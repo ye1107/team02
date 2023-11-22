@@ -14,7 +14,9 @@ class RecordsController extends Controller
      */
     public function index()
     {
-        return Record::all()->toArray();
+        //return Record::all()->toArray();
+        $r =Record::all()->toArray();
+        return view('records.index')->with('records',$r);
     }
 
     /**
