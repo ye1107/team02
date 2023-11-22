@@ -15,8 +15,8 @@ class UsernamesController extends Controller
     public function index()
     {
         //return Username::all()->toArray();
-        $u = Username::all()->toArray();
-        return view('usernames.index')->with('usernames',$u);
+        $e = Username::all()->toArray();
+        return view('usernames.index')->with('usernames',$e);
     }
 
     /**
