@@ -14,7 +14,10 @@ class KeysController extends Controller
      */
     public function index()
     {
-        return Key::all()->toArray();
+       // return Key::all()->toArray();
+       $k = Key::all()->toArray();
+        return view('keys.index')->with('keys',$k);
+
     }
 
     /**
