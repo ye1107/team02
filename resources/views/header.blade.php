@@ -20,7 +20,7 @@
     </svg>
 
     <div class="ml-4 text-lg leading-7 font-semibold">
-        <a href="{{ route('keys.index') }}" class="ml-1 underline">
+        <a href="{{ route('records.index') }}" class="ml-1 underline">
         所有所有鑰匙借用紀錄
         </a>
     </div>
@@ -34,7 +34,7 @@
     </svg>
 
     <div class="ml-4 text-lg leading-7 font-semibold">
-        <a href="{{ route('keys.index') }}" class="ml-1 underline">
+        <a href="{{ route('usernames.index') }}" class="ml-1 underline">
             所有教職員生
         </a>
     </div>
