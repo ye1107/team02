@@ -49,7 +49,7 @@ class KeysController extends Controller
      */
     public function show($id)
     {
-        //
+        return Key::findOrFail($id)->toArray();
     }
 
     /**
@@ -60,7 +60,7 @@ class KeysController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Key::findOrFail($id)->toArray();
     }
 
     /**
