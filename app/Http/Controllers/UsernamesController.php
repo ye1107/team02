@@ -49,7 +49,7 @@ class UsernamesController extends Controller
      */
     public function show($id)
     {
-        //
+        return Username::findOrFail($id)->toArray();
     }
 
     /**
@@ -60,7 +60,7 @@ class UsernamesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Username::findOrFail($id)->toArray();
     }
 
     /**
