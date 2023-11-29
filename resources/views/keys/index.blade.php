@@ -1,8 +1,6 @@
-<html>
+@extends('app')
 
-<head>
-    <title>列出所有鑰匙編號和地點</title>
-</head>
+@section('record_contents')
 <h1>列出所有鑰匙編號和地點</h1>
 <table>
     <tr>
@@ -23,6 +21,5 @@
             <td>刪除</td>
         </tr>
     @endfor
-
-</body>
-</html>
+    <table>
+@endsection

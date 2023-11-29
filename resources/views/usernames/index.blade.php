@@ -1,8 +1,6 @@
-<html>
+@extends('app')
 
-<head>
-    <title>列出所有教職員生</title>
-</head>
+@section('record_contents')
 <h1>列出所有教職員生</h1>
 <table>
     <tr>
@@ -25,6 +23,5 @@
             <td>刪除</td>
         </tr>
     @endfor
-
-</body>
-</html>
+    <table>
+@endsection
