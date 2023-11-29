@@ -46,7 +46,7 @@ class RecordsController extends Controller
      */
     public function show($id)
     {
-        //
+        return Record::findOrFail($id)->toArray();
     }
 
     /**
@@ -57,7 +57,7 @@ class RecordsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Record::findOrFail($id)->toArray();
     }
 
     /**
