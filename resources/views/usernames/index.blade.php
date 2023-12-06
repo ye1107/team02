@@ -14,16 +14,16 @@
         <th>操作2</th>
         <th>操作3</th>
     </tr>
-    @for($i=0; $i<count($usernames); $i++)
+    @foreach($usernames as $username)
         <tr>
-            <td>{{ $usernames[$i]['id'] }}</td>
-            <td>{{ $usernames[$i]['number'] }}</td>
-            <td>{{ $usernames[$i]['name'] }}</td>
-            <td>{{ $usernames[$i]['photo'] }}</td>
-            <td><a href="{{ route('usernames.show', ['id'=>$usernames[$i]['id']]) }}">顯示</a></td>
-            <td><a href="{{ route('usernames.edit', ['id'=>$usernames[$i]['id']]) }}">修改</a></td>
+            <td>{{ $username->id }}</td>
+            <td>{{ $username->number }}</td>
+            <td>{{ $username->name }}</td>
+            <td>{{ $username->photo }}</td>
+            <td><a href="{{ route('usernames.show', ['id'=>$username->id]) }}">顯示</a></td>
+            <td><a href="{{ route('usernames.edit', ['id'=>$username->id]) }}">修改</a></td>
             <td>刪除</td>
         </tr>
-    @endfor
-    <table>
+    @endforeach
+</table>
 @endsection

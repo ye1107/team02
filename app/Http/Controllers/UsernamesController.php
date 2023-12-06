@@ -15,8 +15,8 @@ class UsernamesController extends Controller
     public function index()
     {
         //return Username::all()->toArray();
-        $u = Username::all()->toArray();
-        return view('usernames.index')->with('usernames',$u);
+        $usernames = Username::all();
+        return view('usernames.index')->with('usernames',$usernames);
     }
 
     /**
@@ -48,7 +48,8 @@ class UsernamesController extends Controller
      */
     public function show($id)
     {
-        return Username::findOrFail($id)->toArray();
+        $username = Username::findOrFail($id);
+        return view('usernames.show')->with('username',$username);
     }
 
     /**
