@@ -13,4 +13,8 @@ class Username extends Model
         'name',
         'photo',
     ];
+    public function records()
+    {
+        return $this->hasMany('App\Models\Record','uid');
+    }
 }

@@ -12,4 +12,8 @@ class Key extends Model
         'key',
         'room',
     ];
+    public function records()
+    {
+        return $this->hasMany('App\Models\Record','kid');
+    }
 }
