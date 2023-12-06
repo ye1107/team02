@@ -13,15 +13,21 @@
         <th>操作2</th>
         <th>操作3</th>
     </tr>
-    @for($i=0; $i<count($keys); $i++)
+    @foreach($keys as $key)
         <tr>
-            <td>{{ $keys[$i]['id'] }}</td>
-            <td>{{ $keys[$i]['key'] }}</td>
-            <td>{{ $keys[$i]['room'] }}</td>
-            <td><a href="{{ route('keys.show', ['id'=>$keys[$i]['id']]) }}">顯示</a></td>
-            <td><a href="{{ route('keys.edit', ['id'=>$keys[$i]['id']]) }}">修改</a></td>
-            <td>刪除</td>
+            <td>{{ $key->id }}</td>
+            <td>{{ $key->key }}</td>
+            <td>{{ $key->room }}</td>
+            <td><a href="{{ route('keys.show', ['id'=>$key->id]) }}">顯示</a></td>
+            <td><a href="{{ route('keys.edit', ['id'=>$key->id]) }}">修改</a></td>
+            <td>
+            <form action="{{ url('/keys/delete',['id'=>$key->id])}}" method="post">
+                    <input class="btn btn-default" type="submit" value="刪除" />
+                    @method('delete')
+                    @csrf
+                </form>
+            </td>
         </tr>
-    @endfor
-    <table>
+    @endforeach
+</table>
 @endsection

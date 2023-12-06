@@ -14,7 +14,8 @@ class RecordsController extends Controller
      */
     public function index()
     {
-        return Record::all()->toArray();
+        $records =Record::all();
+        return view('records.index')->with('records',$records);
     }
 
     /**
@@ -46,7 +47,8 @@ class RecordsController extends Controller
      */
     public function show($id)
     {
-        return Record::findOrFail($id)->toArray();
+        $record = Record::findOrFail($id);
+     return view('records.show')->with('record',$record);
     }
 
     /**
@@ -80,6 +82,8 @@ class RecordsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $record = Record::findOrFail($id);
+        $record->delete();
+        return redirect('records');
     }
 }

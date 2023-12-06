@@ -14,7 +14,8 @@ class KeysController extends Controller
      */
     public function index()
     {
-        return Key::all()->toArray();
+        $keys = Key::all();
+        return view('keys.index')->with('keys',$keys);
     }
 
     /**
@@ -46,7 +47,8 @@ class KeysController extends Controller
      */
     public function show($id)
     {
-        return Key::findOrFail($id)->toArray();
+        $key = Key::findOrFail($id);
+        return view('keys.show')->with('key',$key);
     }
 
     /**
@@ -80,6 +82,9 @@ class KeysController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $key = Key::findOrFail($id);
+        $key->delete();
+        return redirect('keys');
+    
     }
 }
