@@ -49,7 +49,9 @@ class UsernamesController extends Controller
     public function show($id)
     {
         $username = Username::findOrFail($id);
-        return view('usernames.show')->with('username',$username);
+        $records = $username->records;
+        return view('usernames.show', ['username' => $username, 'records' => $records]);
+
     }
 
     /**
@@ -83,6 +85,8 @@ class UsernamesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $username = Username::findOrFail($id);
+        $username->delete();
+        return redirect('usernames');
     }
 }

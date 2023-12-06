@@ -20,7 +20,13 @@
             <td>{{ $key->room }}</td>
             <td><a href="{{ route('keys.show', ['id'=>$key->id]) }}">顯示</a></td>
             <td><a href="{{ route('keys.edit', ['id'=>$key->id]) }}">修改</a></td>
-            <td>刪除</td>
+            <td>
+            <form action="{{ url('/keys/delete',['id'=>$key->id])}}" method="post">
+                    <input class="btn btn-default" type="submit" value="刪除" />
+                    @method('delete')
+                    @csrf
+                </form>
+            </td>
         </tr>
     @endforeach
 </table>

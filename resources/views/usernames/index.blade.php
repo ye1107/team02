@@ -22,7 +22,13 @@
             <td>{{ $username->photo }}</td>
             <td><a href="{{ route('usernames.show', ['id'=>$username->id]) }}">顯示</a></td>
             <td><a href="{{ route('usernames.edit', ['id'=>$username->id]) }}">修改</a></td>
-            <td>刪除</td>
+            <td>
+            <form action="{{ url('/usernames/delete',['id'=>$username->id])}}" method="post">
+                    <input class="btn btn-default" type="submit" value="刪除" />
+                    @method('delete')
+                    @csrf
+                </form>
+            </td>
         </tr>
     @endforeach
 </table>

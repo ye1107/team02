@@ -84,6 +84,8 @@ class RecordsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $record = Record::findOrFail($id);
+        $record->delete();
+        return redirect('records');
     }
 }

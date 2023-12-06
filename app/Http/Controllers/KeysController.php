@@ -50,7 +50,8 @@ class KeysController extends Controller
     public function show($id)
     {
         $key = Key::findOrFail($id);
-        return view('keys.show')->with('key',$key);
+        $records = $key->records;
+        return view('keys.show', ['key' => $key, 'records' => $records]);
     }
 
     /**
@@ -84,6 +85,8 @@ class KeysController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $key = Key::findOrFail($id);
+        $key->delete();
+        return redirect('keys');
     }
 }

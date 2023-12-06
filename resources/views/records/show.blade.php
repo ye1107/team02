@@ -7,8 +7,8 @@
 
 <table>
         編號:{{ $record->id }}</br>
-        教職員生編號:{{ $record->uid }}</br>
-        鑰匙編號:{{ $record->kid }}</br>
+        教職員生編號:{{ $record->username->name }}</br>
+        鑰匙編號:{{ $record->key->key }}</br>
         借用日期:{{ $record->lend_date }}</br>
         借用時間:{{ $record->lend_time }}</br>
         歸還日期:{{ $record->back_date }}</br>
