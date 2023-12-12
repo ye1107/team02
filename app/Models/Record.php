@@ -17,5 +17,14 @@
          'back_date',
          'back_time',
      ];
+     public function key()
+    {
+        return $this->belongsTo('App\Models\Key', 'kid', 'id');
+    }
+    public function username()
+    {
+        return $this->belongsTo('App\Models\Username','uid','id');
+    }
+
  }
   

@@ -14,10 +14,8 @@ class UsernamesController extends Controller
      */
     public function index()
     {
-        //return Username::all()->toArray();
-        $u = Username::all()->toArray();
-        return view('usernames.index')->with('usernames',$u);
-
+        $usernames = Username::all();
+        return view('usernames.index')->with('usernames',$usernames);
     }
 
     /**
@@ -49,7 +47,10 @@ class UsernamesController extends Controller
      */
     public function show($id)
     {
-        //
+        $username = Username::findOrFail($id);
+        $records = $username->records;
+        return view('usernames.show', ['username' => $username, 'records' => $records]);
+
     }
 
     /**
@@ -60,7 +61,7 @@ class UsernamesController extends Controller
      */
     public function edit($id)
     {
-        //
+        return Username::findOrFail($id)->toArray();
     }
 
     /**
@@ -83,6 +84,8 @@ class UsernamesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $username = Username::findOrFail($id);
+        $username->delete();
+        return redirect('usernames');
     }
 }
