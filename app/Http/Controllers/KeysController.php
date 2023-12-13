@@ -12,13 +12,12 @@ class KeysController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
     {
         //return Key::all()->toArray();
-
         $keys = Key::all();
         return view('keys.index')->with('keys',$keys);
+       
     }
 
     /**
@@ -28,7 +27,7 @@ class KeysController extends Controller
      */
     public function create()
     {
-        //
+        return view('keys.create');
     }
 
     /**
@@ -39,7 +38,15 @@ class KeysController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $key = $request->input('key');
+        $room = $request->input('room');
+
+        Key::create([
+            'key' => $key,
+            'room' => $room,
+        ]);
+
+        return redirect('keys');
     }
 
     /**
@@ -51,7 +58,8 @@ class KeysController extends Controller
     public function show($id)
     {
         $key = Key::findOrFail($id);
-        return view('keys.show')->with('key',$key);
+        $records = $key->records;
+        return view('keys.show', ['key' => $key, 'records' => $records]);
     }
 
     /**
@@ -62,7 +70,9 @@ class KeysController extends Controller
      */
     public function edit($id)
     {
-        return Key::findOrFail($id)->toArray();
+        //return Key::findOrFail($id)->toArray();
+        $Key = Key::findOrFail($id);
+        return view('keys.edit', ['Key' =>$Key]);
     }
 
     /**
@@ -74,7 +84,13 @@ class KeysController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $key = Key::findOrFail($id);
+
+        $key->key = $request->input('key');
+        $key->room = $request->input('room');
+        $key->save();
+
+        return redirect('keys');
     }
 
     /**

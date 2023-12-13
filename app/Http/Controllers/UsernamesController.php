@@ -15,10 +15,8 @@ class UsernamesController extends Controller
     public function index()
     {
         //return Username::all()->toArray();
-
         $usernames = Username::all();
         return view('usernames.index')->with('usernames',$usernames);
-
     }
 
     /**
@@ -28,7 +26,7 @@ class UsernamesController extends Controller
      */
     public function create()
     {
-        //
+        return view('usernames.create');
     }
 
     /**
@@ -39,7 +37,17 @@ class UsernamesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $number = $request->input('number');
+        $name = $request->input('name');
+        $photo = $request->input('photo');
+      
+        Username::create([
+            'number' => $number,
+            'name' => $name,
+            'photo' => $photo,
+        ]);
+
+        return redirect('usernames');
     }
 
     /**
@@ -51,7 +59,9 @@ class UsernamesController extends Controller
     public function show($id)
     {
         $username = Username::findOrFail($id);
-        return view('usernames.show')->with('username',$username);
+        $records = $username->records;
+        return view('usernames.show', ['username' => $username, 'records' => $records]);
+
     }
 
     /**
@@ -62,7 +72,9 @@ class UsernamesController extends Controller
      */
     public function edit($id)
     {
-        return Username::findOrFail($id)->toArray();
+        //return Username::findOrFail($id)->toArray();
+        $Username = Username::findOrFail($id);
+        return view('usernames.edit', ['Username' =>$Username]);
     }
 
     /**
@@ -74,7 +86,14 @@ class UsernamesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $username = Username::findOrFail($id);
+
+        $username->number = $request->input('number');
+        $username->name = $request->input('name');
+        $username->photo = $request->input('photo');
+        $username->save();
+
+        return redirect('usernames');
     }
 
     /**
