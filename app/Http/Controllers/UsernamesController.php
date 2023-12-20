@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateUsernameRequest;
 use App\Models\Username;
 
 class UsernamesController extends Controller
@@ -35,7 +35,7 @@ class UsernamesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateUsernameRequest $request)
     {
         $number = $request->input('number');
         $name = $request->input('name');
@@ -84,7 +84,7 @@ class UsernamesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateUsernameRequest $request, $id)
     {
         $username = Username::findOrFail($id);
 

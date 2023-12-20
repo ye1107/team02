@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Record;
 use App\Models\Key;
 use App\Models\Username;
+use App\Http\Requests\CreateRecordRequest;
 
 class RecordsController extends Controller
 {
@@ -31,7 +31,15 @@ class RecordsController extends Controller
         //return view('records.create');
         $keys = Key::orderBy('keys.id', 'asc')->pluck('keys.key', 'keys.id');
         $usernames = Username::orderBy('usernames.id', 'asc')->pluck('usernames.name', 'usernames.id');
-        return view('keys.create', ['keys' =>$keys, 'keySelected' => null],'usernames.create',['usernames' =>$usernames, 'usaernameSelected' => null]);
+
+        return view('records.create', [
+        'keys' => $keys,
+        'keySelected' => null,
+        'usernames' => $usernames,
+        'usernameSelected' => null
+]);
+
+
     }
 
     /**
@@ -40,13 +48,13 @@ class RecordsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateRecordRequest $request)
     {
         $uid = $request->input('uid');
         $kid = $request->input('kid');
         $lend_date = $request->input('lend_date');
         $lend_time = $request->input('lend_time');
-        $back_date = $back_date->input('back_date');
+        $back_date = $request->input('back_date');
         $back_time = $request->input('back_time');
 
         $record = Record::create([
@@ -97,7 +105,7 @@ class RecordsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreateRecordRequest $request, $id)
     {
         $record = Record::findOrFail($id);
 
