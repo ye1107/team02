@@ -3,6 +3,10 @@
 @section('title','鑰匙借用系統-列出所有鑰匙借用紀錄')
 
 @section('record_contents')
+<div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    <a href="{{ route('records.create') }} ">新增鑰匙借用紀錄</a>
+    <a href="{{ route('records.index') }} ">所有鑰匙借用紀錄</a>
+</div>
 <h1>列出所有鑰匙借用紀錄</h1>
 <table>
     <tr>

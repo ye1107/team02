@@ -3,6 +3,10 @@
 @section('title','鑰匙借用系統 - 所有教職員生')
 
 @section('record_contents')
+<div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    <a href="{{ route('usernames.create') }} ">新增教職員生</a>
+    <a href="{{ route('usernames.index') }} ">所有教職員生</a>
+</div>
 <h1>列出所有教職員生</h1>
 <table>
     <tr>
