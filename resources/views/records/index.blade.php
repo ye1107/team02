@@ -6,6 +6,11 @@
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
     <a href="{{ route('records.create') }} ">新增鑰匙借用紀錄</a>
     <a href="{{ route('records.index') }} ">所有鑰匙借用紀錄</a>
+    <a href="{{ route('records.borrow') }} ">所有2023年借用紀錄</a>
+    <form action="{{ url('records/kid') }}" method='GET'>
+        {!! Form::label('lock', '選定鑰匙：') !!}
+        {!! Form::select('lock', $kids,'selectedkid',['class' => 'form-control']) !!}
+        <input class="btn btn-default" type="submit" value="查詢" />
 </div>
 <h1>列出所有鑰匙借用紀錄</h1>
 <table>
@@ -42,4 +47,5 @@
         </tr>
     @endforeach
 </table>
+{{$records->withQueryString()->links()}}
 @endsection
