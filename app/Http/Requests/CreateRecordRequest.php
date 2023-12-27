@@ -27,7 +27,7 @@ class CreateRecordRequest extends FormRequest
                 'uid' => 'required',
                 'kid' => 'required',
                 'lend_date' => 'required|date',
-                'lend_time' => 'required',
+                'lend_time' => 'required|dateearlier:lend_date,back_date,back_time',
                 'back_date' => 'required|date|after_or_equal:lend_date',
                 'back_time' => 'required'
              ];
@@ -42,6 +42,7 @@ class CreateRecordRequest extends FormRequest
             "back_date.required" => "歸還日期 為必填",
             "back_time.required" => "歸還時間 為必填",
             "back_date.after_or_equal" => "歸還日期 必須大於或等於借用日期",
+            "lend_time.dateearlier"=>"歸還日期時間 必須晚於借用日期時間"
         ];
     }
-}
+ }

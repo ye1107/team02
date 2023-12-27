@@ -26,11 +26,15 @@ Route::get('records/{id}/edit', [RecordsController::class,'edit'])->where('id', 
 // 刪除單一鑰匙借用紀錄資料
 Route::delete('records/delete/{id}',[RecordsController::class,'destroy'])->where('id', '[0-9]+')->name('records.destroy');
 // 新增鑰匙借用紀錄表單
-Route::get('records/create',[RecordsController::class,'create'])->name('records.create');
+Route::get('records/create', [RecordsController::class, 'create'])->name('records.create');
 // 修改鑰匙借用紀錄資料
 Route::patch('records/update/{id}', [RecordsController::class, 'update'])->where('id', '[0-9]+')->name('records.update');
 // 儲存鑰匙借用紀錄資料
 Route::post('records/store', [RecordsController::class, 'store'])->where('id', '[0-9]+')->name('records.store');
+//2023年借用查詢
+Route::get('records/borrow',[RecordsController::class,'borrow'])->name('records.borrow');
+//選定鑰匙查詢借用者
+Route::get('records/kid', [RecordsController::class, 'kid'])->name('records.kid');
 
 // 顯示所有鑰匙編號和地點
 Route::get('keys',[KeysController::class,'index'])->name('keys.index');
@@ -41,7 +45,7 @@ Route::get('keys/{id}/edit', [KeysController::class,'edit'])->where('id', '[0-9]
 // 刪除單一鑰匙編號和地點資料
 Route::delete('keys/delete/{id}',[KeysController::class,'destroy'])->where('id', '[0-9]+')->name('keys.destroy');
 // 新增鑰匙編號和地點表單
-Route::get('keys/create',[KeysController::class,'create'])->name('keys.create');
+Route::get('keys/create', [KeysController::class, 'create'])->name('keys.create');
 // 修改鑰匙編號和地點資料
 Route::patch('keys/update/{id}', [KeysController::class, 'update'])->where('id', '[0-9]+')->name('keys.update');
 // 儲存鑰匙編號和地點資料
@@ -56,7 +60,7 @@ Route::get('usernames/{id}/edit', [UsernamesController::class,'edit'])->where('i
 // 刪除單一教職員生資料
 Route::delete('usernames/delete/{id}',[UsernamesController::class,'destroy'])->where('id', '[0-9]+')->name('usernames.destroy');
 // 新增教職員生表單
-Route::get('usernames/create',[UsernamesController::class,'create'])->name('usernames.create');
+Route::get('usernames/create', [UsernamesController::class, 'create'])->name('usernames.create');
 // 修改教職員生資料
 Route::patch('usernames/update/{id}', [UsernamesController::class, 'update'])->where('id', '[0-9]+')->name('usernames.update');
 // 儲存教職員生資料

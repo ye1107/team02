@@ -6,6 +6,7 @@ use App\Models\Record;
 use App\Models\Key;
 use App\Models\Username;
 use App\Http\Requests\CreateRecordRequest;
+use Illuminate\Http\Request;
 
 class RecordsController extends Controller
 {
@@ -17,9 +18,25 @@ class RecordsController extends Controller
     public function index()
     {
         //return Record::all()->toArray();
-        $records =Record::all();
-        return view('records.index')->with('records',$records);
+        $records =Record::paginate(25);
+        $kids = Record::allkids()->pluck('kid','kid');
+        return view('records.index',['records'=>$records,'kids'=>$kids,'selectedkid'=>null]);
     }
+
+    public function borrow()
+    {
+        $records =Record::borrow('2023-01-01','2023,12-31')->paginate(25);;
+        $kids = Record::allkids()->pluck('kid','kid');
+        return view('records.index',['records'=>$records,'kids'=>$kids,'selectedkid'=>null]);
+    }
+
+    public function kid(Request $request)
+    {
+        $records =Record::kid($request->input('lock'))->paginate(25);;
+        $kids = Record::allkids()->pluck('kid','kid');
+        return view('records.index',['records'=>$records,'kids'=>$kids,'selectedkid'=>null]);
+    }
+
 
     /**
      * Show the form for creating a new resource.
