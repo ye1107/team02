@@ -25,5 +25,17 @@
     {
         return $this->belongsTo('App\Models\Username','uid','id');
     }
+    public function scopeBorrow($query,$start,$end)
+    {
+        return $query->whereBetween('lend_date',[$start,$end]);
+    }
+    public function scopeAllKids($query)
+    {
+        return $query->select('kid')->groupBy('kid');
+    }
+    public function scopeKey($query,$lock)
+    {    
+        return $query->where('kid','=',$lock);
+    }
  }
   

@@ -24,16 +24,18 @@ class CreateKeyRequest extends FormRequest
     public function rules()
     {
         return [
+               
                 'key' => 'required',
-                'room' => 'required'
+                'room' => 'required|same:key',
               
              ];
     }
     public function messages()
     {
         return [
-            "key.required" => " 鑰匙編號 為必填",
+            "key.required" => "鑰匙編號 為必填",
             "room.required" => "教室名稱 為必填",
+            "room.same" => "教室名稱 必須與鑰匙編號相同",
         ];
     }    
 }

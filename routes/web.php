@@ -31,6 +31,10 @@ Route::get('records/create', [RecordsController::class, 'create'])->name('record
 Route::patch('records/update/{id}', [RecordsController::class, 'update'])->where('id', '[0-9]+')->name('records.update');
 // 儲存鑰匙借用紀錄資料
 Route::post('records/store', [RecordsController::class, 'store'])->where('id', '[0-9]+')->name('records.store');
+//2023年借用查詢
+Route::get('records/borrow',[RecordsController::class,'borrow'])->name('records.borrow');
+//選定鑰匙查詢借用者
+Route::get('records/kid', [RecordsController::class, 'kid'])->name('records.kid');
 
 // 顯示所有鑰匙編號和地點
 Route::get('keys',[KeysController::class,'index'])->name('keys.index');
