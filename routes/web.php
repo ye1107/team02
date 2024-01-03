@@ -65,3 +65,6 @@ Route::get('usernames/create', [UsernamesController::class, 'create'])->name('us
 Route::patch('usernames/update/{id}', [UsernamesController::class, 'update'])->where('id', '[0-9]+')->name('usernames.update');
 // 儲存教職員生資料
 Route::post('usernames/store', [UsernamesController::class, 'store'])->where('id', '[0-9]+')->name('usernames.store');
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

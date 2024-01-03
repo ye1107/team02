@@ -4,6 +4,9 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\pagination\paginator;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,5 +36,6 @@ class AppServiceProvider extends ServiceProvider
             return Carbon::parse($back_date . ' ' . $back_time) >= Carbon::parse($lend_date . ' ' . $lend_time);
         });
         Paginator::defaultView('vendor.pagination.semantic-ui');
+        
     }
 }

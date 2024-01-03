@@ -4,7 +4,9 @@
 
 @section('record_contents')
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    @can('admin')
     <a href="{{ route('keys.create') }} ">新增鑰匙編號和地點</a>
+    @endcan
     <a href="{{ route('keys.index') }} ">所有鑰匙編號和地點</a>
 </div>
 <h1>列出所有鑰匙編號和地點</h1>
@@ -14,8 +16,12 @@
         <th>鑰匙</th>
         <th>教室</th>
         <th>操作1</th>
+        @can('admin')
         <th>操作2</th>
         <th>操作3</th>
+        @elsecan('manager')
+        <th>操作2</th>
+        @endcan
     </tr>
     @foreach($keys as $key)
         <tr>
@@ -23,6 +29,7 @@
             <td>{{ $key->key }}</td>
             <td>{{ $key->room }}</td>
             <td><a href="{{ route('keys.show', ['id'=>$key->id]) }}">顯示</a></td>
+            @can('admin')
             <td><a href="{{ route('keys.edit', ['id'=>$key->id]) }}">修改</a></td>
             <td>
             <form action="{{ url('/keys/delete',['id'=>$key->id])}}" method="post">
@@ -31,6 +38,9 @@
                     @csrf
                 </form>
             </td>
+            @elsecan('manager')
+            <td><a href="{{ route('keys.edit', ['id'=>$key->id]) }}">修改</a></td>
+            @endcan
         </tr>
     @endforeach
 </table>
