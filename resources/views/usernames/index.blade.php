@@ -4,7 +4,9 @@
 
 @section('record_contents')
 <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+    @can('admin')
     <a href="{{ route('usernames.create') }} ">新增教職員生</a>
+    @endcan
     <a href="{{ route('usernames.index') }} ">所有教職員生</a>
 </div>
 <h1>列出所有教職員生</h1>
@@ -15,8 +17,12 @@
         <th>教職員生姓名</th>
         <th>人臉照片檔名路徑</th> 
         <th>操作1</th>
+        @can('admin')
         <th>操作2</th>
         <th>操作3</th>
+        @elsecan('manager')
+        <th>操作2</th>
+        @endcan
     </tr>
     @foreach($usernames as $username)
         <tr>
@@ -25,6 +31,7 @@
             <td>{{ $username->name }}</td>
             <td>{{ $username->photo }}</td>
             <td><a href="{{ route('usernames.show', ['id'=>$username->id]) }}">顯示</a></td>
+            @can('admin')
             <td><a href="{{ route('usernames.edit', ['id'=>$username->id]) }}">修改</a></td>
             <td>
             <form action="{{ url('/usernames/delete',['id'=>$username->id])}}" method="post">
@@ -33,6 +40,9 @@
                     @csrf
                 </form>
             </td>
+            @elsecan('manager')
+            <td><a href="{{ route('usernames.edit', ['id'=>$username->id]) }}">修改</a></td>
+            @endcan
         </tr>
     @endforeach
 </table>

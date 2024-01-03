@@ -105,6 +105,7 @@ class RecordsController extends Controller
      */
     public function edit($id)
     {
+        parent::edit($id);
         //return Record::findOrFail($id)->toArray();
         $record = Record::findOrFail($id);
         $keys = Key::orderBy('keys.id', 'asc')->pluck('keys.key', 'keys.id');

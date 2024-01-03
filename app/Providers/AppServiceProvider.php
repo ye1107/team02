@@ -1,38 +1,48 @@
 <?php
 
-namespace App\Providers;
+namespace App\Models;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
 
-class AppServiceProvider extends ServiceProvider
+class User extends Authenticatable
 {
+    use HasApiTokens, HasFactory, Notifiable;
+
+    const ROLE_ADMIN = 'admin';
+    const ROLE_MANAGER = 'manager';
+    const ROLE_USER = 'user';    
     /**
-     * Register any application services.
+     * The attributes that are mass assignable.
      *
-     * @return void
+     * @var array<int, string>
      */
-    public function register()
-    {
-        //
-    }
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'role'
+    ];
 
     /**
-     * Bootstrap any application services.
+     * The attributes that should be hidden for serialization.
      *
-     * @return void
+     * @var array<int, string>
      */
-    public function boot()
-    {
-        Schema::defaultStringLength(191);
-        Validator::extend('dateearlier', function($attribute, $value, $parameters, $validator) {
-            $lend_date = \Arr::get($validator->getData(), $parameters[0]);
-            $lend_time = $valuAe;
-            $back_date = \Arr::get($validator->getData(), $parameters[1]);
-            $back_time =  \Arr::get($validator->getData(), $parameters[2]);
-            return Carbon::parse($back_date . ' ' . $back_time) >= Carbon::parse($lend_date . ' ' . $lend_time);
-        });
-        Paginator::defaultView('vendor.pagination.semantic-ui');
-        
-    }
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
 }
