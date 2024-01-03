@@ -72,6 +72,7 @@ class UsernamesController extends Controller
      */
     public function edit($id)
     {
+        parent::edit($id);
         //return Username::findOrFail($id)->toArray();
         $Username = Username::findOrFail($id);
         return view('usernames.edit', ['Username' =>$Username]);

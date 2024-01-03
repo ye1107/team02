@@ -70,6 +70,7 @@ class KeysController extends Controller
      */
     public function edit($id)
     {
+        parent::edit($id);
         //return Key::findOrFail($id)->toArray();
         $Key = Key::findOrFail($id);
         return view('keys.edit', ['Key' =>$Key]);
