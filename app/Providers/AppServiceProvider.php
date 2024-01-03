@@ -1,48 +1,42 @@
 <?php
 
-namespace App\Models;
+namespace App\Providers;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\pagination\paginator;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Validator;
 
-class User extends Authenticatable
+class AppServiceProvider extends ServiceProvider
 {
-    use HasApiTokens, HasFactory, Notifiable;
-
-    const ROLE_ADMIN = 'admin';
-    const ROLE_MANAGER = 'manager';
-    const ROLE_USER = 'user';    
     /**
-     * The attributes that are mass assignable.
+     * Register any application services.
      *
-     * @var array<int, string>
+     * @return void
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'role'
-    ];
+    public function register()
+    {
+        //
+    }
 
     /**
-     * The attributes that should be hidden for serialization.
+     * Bootstrap any application services.
      *
-     * @var array<int, string>
+     * @return void
      */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function boot()
+    {
+        Schema::defaultStringLength(191);
+        Validator::extend('dateearlier', function($attribute, $value, $parameters, $validator) {
+            $lend_date = \Arr::get($validator->getData(), $parameters[0]);
+            $lend_time = $valuAe;
+            $back_date = \Arr::get($validator->getData(), $parameters[1]);
+            $back_time =  \Arr::get($validator->getData(), $parameters[2]);
+            return Carbon::parse($back_date . ' ' . $back_time) >= Carbon::parse($lend_date . ' ' . $lend_time);
+        });
+        Paginator::defaultView('vendor.pagination.semantic-ui');
+    }
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+   
 }
