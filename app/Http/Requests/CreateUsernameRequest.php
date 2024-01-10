@@ -36,5 +36,5 @@ class CreateUsernameRequest extends FormRequest
             "name.required" => "教職員生姓名 為必填",
             "poto.required" => "人臉照片檔名路徑 為必填",
         ];
-    }
+    }    
 }

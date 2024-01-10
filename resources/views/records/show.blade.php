@@ -13,6 +13,6 @@
         借用時間:{{ $record->lend_time }}</br>
         歸還日期:{{ $record->back_date }}</br>
         歸還時間:{{ $record->back_time }}</br>
-
+    
 </table>
 @endsection

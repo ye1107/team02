@@ -17,5 +17,5 @@ class Username extends Model
     {
         return $this->hasMany('App\Models\Record','uid');
     }
-
+    
 }

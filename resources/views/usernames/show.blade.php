@@ -6,7 +6,7 @@
 <h1>列單一教職員生</h1>
 
 <table>
-
+    
         編號:{{ $username->id }}</br>
         教職員生編號:{{ $username->number }}</br>
         教職員生姓名:{{ $username->name }}</br>
