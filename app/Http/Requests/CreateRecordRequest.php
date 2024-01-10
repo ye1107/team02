@@ -44,5 +44,5 @@ class CreateRecordRequest extends FormRequest
             "back_date.after_or_equal" => "歸還日期 必須大於或等於借用日期",
             "lend_time.dateearlier"=>"歸還日期時間 必須晚於借用日期時間"
         ];
-    }
+    }    
 }

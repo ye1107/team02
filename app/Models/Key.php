@@ -16,4 +16,5 @@ class Key extends Model
     {
         return $this->hasMany('App\Models\Record','kid');
     }
+    
 }
