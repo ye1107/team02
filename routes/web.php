@@ -71,3 +71,4 @@ Route::post('usernames/store', [UsernamesController::class, 'store'])->where('id
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
